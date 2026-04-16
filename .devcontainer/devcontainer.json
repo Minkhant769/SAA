@@ -1,0 +1,17 @@
+{
+    "name": "AWS SAA",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "features": {
+        "ghcr.io/devcontainers/features/aws-cli:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "amazonwebservices.aws-toolkit-vscode",
+                "hashicorp.terraform",
+                "ms-python.python"
+            ]
+        }
+    },
+    "postCreateCommand": "pip install boto3"
+}
