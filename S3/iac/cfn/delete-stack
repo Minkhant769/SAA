@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+echo "==delete s3 stack=="
+
+STARK_NAME="cfn-s3-simple"
+
+aws cloudformation delete-stack \
+    --stack-name  $STARK_NAME\
+    --region ap-southeast-1

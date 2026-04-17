@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+echo "==deploy s3 bucket via cloudformation=="
+
+STARK_NAME="cfn-s3-simple"
+aws cloudformation deploy \
+    --template-file templete.yaml \
+    --stack-name  $STARK_NAME\
+    --no-execute-changeset \
+    --region ap-southeast-1
