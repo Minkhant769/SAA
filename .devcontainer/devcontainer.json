@@ -1,18 +1,20 @@
 {
-    "name": "AWS SAA Engineering Environment",
+    "name": "AWS SAA & CDK Engineering Environment",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
         "ghcr.io/devcontainers/features/aws-cli:1": {},
-        "ghcr.io/devcontainers/features/powershell:1": {}
+        "ghcr.io/devcontainers/features/powershell:1": {},
+        "ghcr.io/devcontainers/features/node:1": {}
     },
     "customizations": {
         "vscode": {
             "extensions": [
                 "amazonwebservices.aws-toolkit-vscode",
+                "amazonwebservices.amazon-q-vscode",
                 "hashicorp.terraform",
                 "ms-python.python"
             ]
         }
     },
-    "postCreateCommand": "pip install boto3"
+    "postCreateCommand": "pip install boto3 && npm install -g aws-cdk"
 }
