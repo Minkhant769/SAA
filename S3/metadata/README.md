@@ -12,3 +12,9 @@ aws s3api put-object --bucket metadata-min-khant-01 --key hello.txt --body hello
 
 ## Get Metadata through head object
 aws s3api head-object --bucket metadata-min-khant-01 --key hello.txt
+
+## Clean Up object
+aws s3 rm s3://metadata-min-khant-01/hello.txt
+
+## Delete bucket
+aws s3 rb s3://metadata-min-khant-01
