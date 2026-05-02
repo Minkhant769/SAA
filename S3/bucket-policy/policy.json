@@ -1,0 +1,19 @@
+{
+  "Statement": [
+     {
+        "Effect": "Allow",
+        "Principal": {
+           "AWS": "arn:aws:iam::796869736409:user/aws-vscodespace"
+        },
+        "Action": [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::bucket-policy-example-mk-123",
+          "arn:aws:s3:::bucket-policy-example-mk-123/*"
+        ]
+     }
+  ]
+}
