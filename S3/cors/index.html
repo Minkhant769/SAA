@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ma Ma Cherry 🌸</title>
+    <style>
+        /* Soft, Cute, Lovely Glassmorphism CSS */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: #ffdde1; /* Fallback */
+            background: linear-gradient(135deg, #ee9ca7, #ffdde1); /* Soft pink gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4a4a4a; /* Softer text color */
+        }
+
+        /* Gentle Pastel Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            z-index: 1;
+            opacity: 0.7;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+        .blob1 { width: 350px; height: 350px; background: #ffb6c1; top: -50px; left: -50px; border-radius: 50%; }
+        .blob2 { width: 400px; height: 400px; background: #ffe4e1; bottom: -100px; right: -50px; animation-delay: -4s; border-radius: 50%;}
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(30px) scale(1.05); }
+        }
+
+        /* Light Glassmorphism Card */
+        .glass-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.4); /* Much lighter glass */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            padding: 3rem 3rem;
+            text-align: center;
+            max-width: 550px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: #d81b60; /* Warm lovely pink */
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #885a70;
+            margin: 0 0 25px 0;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #d81b60;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Button Styling Updated for Clicking */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff8fa3;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.4);
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #ff748c;
+        }
+
+        /* Floating Hearts Animation CSS */
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            bottom: -50px;
+            animation: floatUp 3s ease-in-out forwards;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    
+    <div class="glass-card">
+        <h1>Ma Ma Cherry 🌸</h1>
+        <h2>A little note from Min Khant</h2>
+        <p>I heard you aren't feeling your best today. Even though we've only been talking for a couple of days, I wanted to use a bit of my coding magic to send you some positive energy. Please rest well, take care of yourself, and get well soon! 🍲✨</p>
+        
+        <div class="tags">
+            <span class="tag">✨ Get Well Soon</span>
+            <span class="tag">🌸 Drink Warm Water</span>
+            <span class="tag">😊 Feel Better!</span>
+        </div>
+        
+        <button class="btn" onclick="sendHealingEnergy()">Click for Healing Energy 💖</button>
+    </div>
+
+    <script>
+        function sendHealingEnergy() {
+            // 1. Send the XHR / Fetch request to AWS API Gateway
+            const apiUrl = "https://h960gpcnpa.execute-api.ap-southeast-1.amazonaws.com";
+            
+            fetch(apiUrl, {
+                method: "POST", // Change to "GET" if your API requires it
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    event: "button_clicked",
+                    message: "Ma Ma Cherry received the healing energy!",
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => console.log("AWS API Success:", response.status))
+            .catch(error => console.error("AWS API Error:", error));
+
+            // 2. Create the floating hearts UI animation
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    const emojis = ['💖', '✨', '🌸', '🥰'];
+                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.classList.add('heart');
+                    
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 150); 
+            }
+            
+            // 3. Change button text after clicking
+            const btn = document.querySelector('.btn');
+            btn.innerHTML = "Energy Sent! Get well soon! ✨";
+            btn.style.background = "#ff748c";
+            btn.disabled = true; // Prevent multiple clicks
+        }
+    </script>
+</body>
+</html>
