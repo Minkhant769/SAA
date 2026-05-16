@@ -1,209 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Ma Ma Cherry 🌸</title>
-    <style>
-        /* Soft, Cute, Lovely Glassmorphism CSS */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            background: #ffdde1; /* Fallback */
-            background: linear-gradient(135deg, #ee9ca7, #ffdde1); /* Soft pink gradient */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #4a4a4a; /* Softer text color */
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        /* Gentle Pastel Blobs */
-        .blob {
-            position: absolute;
-            filter: blur(60px);
-            z-index: 1;
-            opacity: 0.7;
-            animation: float 8s infinite alternate ease-in-out;
-        }
-        .blob1 { width: 350px; height: 350px; background: #ffb6c1; top: -50px; left: -50px; border-radius: 50%; }
-        .blob2 { width: 400px; height: 400px; background: #ffe4e1; bottom: -100px; right: -50px; animation-delay: -4s; border-radius: 50%;}
+<title>For My Favorite Future Medical Technologist</title>
 
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(30px) scale(1.05); }
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Light Glassmorphism Card */
-        .glass-card {
-            position: relative;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.4); /* Much lighter glass */
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 30px;
-            padding: 3rem 3rem;
-            text-align: center;
-            max-width: 550px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer shadow */
-            animation: fadeIn 1.5s ease-out;
-        }
+<style>
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin: 0 0 5px 0;
-            color: #d81b60; /* Warm lovely pink */
-        }
+body{
+    min-height:100vh;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top left,#2563eb33 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#ec489933 0%,transparent 30%),
+    linear-gradient(135deg,#0f172a,#111827,#1e293b);
 
-        h2 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #885a70;
-            margin: 0 0 25px 0;
-            letter-spacing: 1px;
-        }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+}
 
-        p {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
+/* Floating blur circles */
 
-        .tags {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
+.blur{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0.5;
+    animation:float 8s ease-in-out infinite alternate;
+}
 
-        .tag {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #d81b60;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: transform 0.3s ease;
-        }
+.blur1{
+    width:300px;
+    height:300px;
+    background:#3b82f6;
+    top:-80px;
+    left:-80px;
+}
 
-        .tag:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.9);
-        }
+.blur2{
+    width:280px;
+    height:280px;
+    background:#ec4899;
+    bottom:-80px;
+    right:-80px;
+    animation-delay:2s;
+}
 
-        /* Button Styling Updated for Clicking */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #ff8fa3;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: transform 0.3s ease, background 0.3s ease;
-            border: none;
-            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.4);
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-        }
+@keyframes float{
+    from{
+        transform:translateY(0px) translateX(0px);
+    }
+    to{
+        transform:translateY(-30px) translateX(20px);
+    }
+}
 
-        .btn:hover {
-            transform: scale(1.05);
-            background: #ff748c;
-        }
+/* Main Card */
 
-        /* Floating Hearts Animation CSS */
-        .heart {
-            position: fixed;
-            font-size: 1.5rem;
-            bottom: -50px;
-            animation: floatUp 3s ease-in-out forwards;
-            z-index: 100;
-            pointer-events: none;
-        }
+.card{
+    width:100%;
+    max-width:700px;
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1.5) rotate(20deg); opacity: 0; }
-        }
-    </style>
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:30px;
+
+    padding:55px 45px;
+
+    text-align:center;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.4);
+
+    position:relative;
+    z-index:10;
+
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.small-text{
+    color:#93c5fd;
+    font-size:14px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+h1{
+    color:white;
+    font-size:48px;
+    line-height:1.2;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.highlight{
+    background:linear-gradient(to right,#60a5fa,#f472b6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+p{
+    color:rgba(255,255,255,0.78);
+    font-size:17px;
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+/* Quote box */
+
+.quote-box{
+    margin-top:28px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:20px;
+    color:#c4b5fd;
+    font-weight:500;
+    display:none;
+    animation:showQuote 0.4s ease;
+}
+
+@keyframes showQuote{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-top:35px;
+}
+
+button{
+    border:none;
+    padding:16px 22px;
+    border-radius:18px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.35s;
+}
+
+.btn-motivate{
+    background:rgba(255,255,255,0.08);
+    color:white;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.btn-motivate:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,0.14);
+}
+
+.btn-focus{
+    background:linear-gradient(to right,#3b82f6,#ec4899);
+    color:white;
+    box-shadow:0 15px 30px rgba(59,130,246,0.35);
+}
+
+.btn-focus:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.footer{
+    margin-top:35px;
+    color:rgba(255,255,255,0.35);
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+/* Floating hearts */
+
+.heart{
+    position:absolute;
+    color:rgba(255,255,255,0.15);
+    animation:hearts 10s linear infinite;
+    user-select:none;
+}
+
+@keyframes hearts{
+    from{
+        transform:translateY(100vh) scale(0.8);
+    }
+    to{
+        transform:translateY(-120vh) scale(1.3);
+    }
+}
+
+@media(max-width:700px){
+
+    .card{
+        padding:40px 25px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    p{
+        font-size:15px;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    
-    <div class="glass-card">
-        <h1>Ma Ma Cherry 🌸</h1>
-        <h2>A little note from Min Khant</h2>
-        <p>I heard you aren't feeling your best today. Even though we've only been talking for a couple of days, I wanted to use a bit of my coding magic to send you some positive energy. Please rest well, take care of yourself, and get well soon! 🍲✨</p>
-        
-        <div class="tags">
-            <span class="tag">✨ Get Well Soon</span>
-            <span class="tag">🌸 Drink Warm Water</span>
-            <span class="tag">😊 Feel Better!</span>
-        </div>
-        
-        <button class="btn" onclick="sendHealingEnergy()">Click for Healing Energy 💖</button>
+
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
+<div class="heart" style="left:10%; animation-delay:0s;">♥</div>
+<div class="heart" style="left:25%; animation-delay:2s;">♥</div>
+<div class="heart" style="left:40%; animation-delay:4s;">♥</div>
+<div class="heart" style="left:70%; animation-delay:1s;">♥</div>
+<div class="heart" style="left:85%; animation-delay:3s;">♥</div>
+
+<div class="card">
+
+    <div class="small-text">
+        A little message for you
     </div>
 
-    <script>
-        function sendHealingEnergy() {
-            // 1. Send the XHR / Fetch request to AWS API Gateway
-            const apiUrl = "https://h960gpcnpa.execute-api.ap-southeast-1.amazonaws.com";
-            
-            fetch(apiUrl, {
-                method: "POST", // Change to "GET" if your API requires it
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    event: "button_clicked",
-                    message: "Ma Ma Cherry received the healing energy!",
-                    timestamp: new Date().toISOString()
-                })
-            })
-            .then(response => console.log("AWS API Success:", response.status))
-            .catch(error => console.error("AWS API Error:", error));
+    <h1>
+        Hey Future <br>
+        <span class="highlight">Medical Tech Star</span>
+    </h1>
 
-            // 2. Create the floating hearts UI animation
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    const emojis = ['💖', '✨', '🌸', '🥰'];
-                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                    heart.classList.add('heart');
-                    
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                    
-                    document.body.appendChild(heart);
-                    
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 4000);
-                }, i * 150); 
-            }
-            
-            // 3. Change button text after clicking
-            const btn = document.querySelector('.btn');
-            btn.innerHTML = "Energy Sent! Get well soon! ✨";
-            btn.style.background = "#ff748c";
-            btn.disabled = true; // Prevent multiple clicks
-        }
-    </script>
+    <p>
+        I know studying feels exhausting sometimes.
+        Some days you want to rest, scroll on your phone,
+        and forget all the notes, lab work, and textbooks.
+    </p>
+
+    <p>
+        But honestly, I really believe in you.
+        You are smart, hardworking, and capable of doing amazing things.
+        Even when you doubt yourself, I hope you remember
+        that someone out there truly admires your effort.
+    </p>
+
+    <p>
+        One day, all these late-night study sessions
+        will become part of your success story.
+        So don't give up yet.
+    </p>
+
+    <div class="quote-box" id="quoteBox"></div>
+
+    <div class="buttons">
+
+        <button class="btn-motivate" onclick="motivateMe()">
+            I Need Motivation
+        </button>
+
+        <button class="btn-focus" onclick="focusMode()">
+            Enter Study Mode
+        </button>
+
+    </div>
+
+    <div class="footer">
+        YOU ARE DOING BETTER THAN YOU THINK
+    </div>
+
+</div>
+
+<script>
+
+const quotes = [
+
+    "The future hospital lab is waiting for someone exactly like you.",
+
+    "Every chapter you finish is one step closer to your dream.",
+
+    "You do not need perfect motivation. Just one more small step.",
+
+    "A tired student today can become an incredible professional tomorrow.",
+
+    "Someone believes in you more than you realize.",
+
+    "Study now so future-you can smile proudly later."
+
+];
+
+function motivateMe(){
+
+    const quoteBox = document.getElementById("quoteBox");
+
+    const randomQuote =
+    quotes[Math.floor(Math.random() * quotes.length)];
+
+    quoteBox.innerHTML = randomQuote;
+
+    quoteBox.style.display = "block";
+}
+
+function focusMode(){
+
+    document.querySelector(".card").innerHTML = `
+
+        <div class="small-text">
+            Focus Mode Activated
+        </div>
+
+        <h1>
+            You Can Do This
+        </h1>
+
+        <p>
+            Put your phone away for 25 minutes.
+            Open your notes.
+            Start with just one page.
+        </p>
+
+        <p class="highlight">
+            Small progress is still progress.
+        </p>
+
+        <div class="buttons">
+
+            <button class="btn-focus" onclick="location.reload()">
+                Take a Short Break
+            </button>
+
+        </div>
+
+        <div class="footer">
+            KEEP GOING
+        </div>
+
+    `;
+}
+
+</script>
+
 </body>
 </html>
