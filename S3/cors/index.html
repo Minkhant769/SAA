@@ -1,377 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Secret Space</title>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%); height: 100vh; display: flex; justify-content: center; align-items: center; }
+        
+        .chat-container { width: 100%; max-width: 400px; height: 90vh; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Setup Screen */
+        #setup-screen { padding: 40px 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        h1 { color: #0284c7; font-size: 24px; margin-bottom: 20px; }
+        .code-box { background: #f1f5f9; padding: 15px; border-radius: 10px; font-size: 20px; font-weight: bold; color: #334155; letter-spacing: 2px; margin-bottom: 30px; user-select: all; }
+        input { padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; width: 100%; font-size: 16px; margin-bottom: 15px; outline: none; text-align: center; }
+        input:focus { border-color: #0ea5e9; }
+        button { background: #0ea5e9; color: white; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; }
+        button:hover { background: #0284c7; }
 
-<title>For My Favorite Future Medical Technologist</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    min-height:100vh;
-    overflow:hidden;
-    background:
-    radial-gradient(circle at top left,#2563eb33 0%,transparent 30%),
-    radial-gradient(circle at bottom right,#ec489933 0%,transparent 30%),
-    linear-gradient(135deg,#0f172a,#111827,#1e293b);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    position:relative;
-}
-
-/* Floating blur circles */
-
-.blur{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(80px);
-    opacity:0.5;
-    animation:float 8s ease-in-out infinite alternate;
-}
-
-.blur1{
-    width:300px;
-    height:300px;
-    background:#3b82f6;
-    top:-80px;
-    left:-80px;
-}
-
-.blur2{
-    width:280px;
-    height:280px;
-    background:#ec4899;
-    bottom:-80px;
-    right:-80px;
-    animation-delay:2s;
-}
-
-@keyframes float{
-    from{
-        transform:translateY(0px) translateX(0px);
-    }
-    to{
-        transform:translateY(-30px) translateX(20px);
-    }
-}
-
-/* Main Card */
-
-.card{
-    width:100%;
-    max-width:700px;
-
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,0.12);
-
-    border-radius:30px;
-
-    padding:55px 45px;
-
-    text-align:center;
-
-    box-shadow:
-    0 20px 60px rgba(0,0,0,0.4);
-
-    position:relative;
-    z-index:10;
-
-    animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.small-text{
-    color:#93c5fd;
-    font-size:14px;
-    letter-spacing:3px;
-    margin-bottom:15px;
-    text-transform:uppercase;
-}
-
-h1{
-    color:white;
-    font-size:48px;
-    line-height:1.2;
-    margin-bottom:25px;
-    font-weight:700;
-}
-
-.highlight{
-    background:linear-gradient(to right,#60a5fa,#f472b6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-p{
-    color:rgba(255,255,255,0.78);
-    font-size:17px;
-    line-height:1.9;
-    margin-bottom:18px;
-}
-
-/* Quote box */
-
-.quote-box{
-    margin-top:28px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:20px;
-    padding:20px;
-    color:#c4b5fd;
-    font-weight:500;
-    display:none;
-    animation:showQuote 0.4s ease;
-}
-
-@keyframes showQuote{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* Buttons */
-
-.buttons{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-top:35px;
-}
-
-button{
-    border:none;
-    padding:16px 22px;
-    border-radius:18px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:600;
-    transition:0.35s;
-}
-
-.btn-motivate{
-    background:rgba(255,255,255,0.08);
-    color:white;
-    border:1px solid rgba(255,255,255,0.1);
-}
-
-.btn-motivate:hover{
-    transform:translateY(-4px);
-    background:rgba(255,255,255,0.14);
-}
-
-.btn-focus{
-    background:linear-gradient(to right,#3b82f6,#ec4899);
-    color:white;
-    box-shadow:0 15px 30px rgba(59,130,246,0.35);
-}
-
-.btn-focus:hover{
-    transform:translateY(-4px) scale(1.02);
-}
-
-.footer{
-    margin-top:35px;
-    color:rgba(255,255,255,0.35);
-    font-size:13px;
-    letter-spacing:2px;
-}
-
-/* Floating hearts */
-
-.heart{
-    position:absolute;
-    color:rgba(255,255,255,0.15);
-    animation:hearts 10s linear infinite;
-    user-select:none;
-}
-
-@keyframes hearts{
-    from{
-        transform:translateY(100vh) scale(0.8);
-    }
-    to{
-        transform:translateY(-120vh) scale(1.3);
-    }
-}
-
-@media(max-width:700px){
-
-    .card{
-        padding:40px 25px;
-    }
-
-    h1{
-        font-size:34px;
-    }
-
-    p{
-        font-size:15px;
-    }
-
-}
-
-</style>
+        /* Chat Screen (Hidden initially) */
+        #chat-screen { display: none; flex-direction: column; height: 100%; }
+        .header { background: #0ea5e9; color: white; padding: 20px; text-align: center; font-weight: bold; font-size: 18px; }
+        .messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
+        .msg { padding: 12px 16px; border-radius: 15px; max-width: 80%; font-size: 15px; line-height: 1.4; }
+        .msg.me { background: #0ea5e9; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .msg.her { background: #e2e8f0; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .msg.system { background: transparent; color: #94a3b8; align-self: center; font-size: 12px; text-align: center; width: 100%;}
+        
+        .input-area { padding: 15px; background: white; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+        .input-area input { margin: 0; text-align: left; }
+        .input-area button { width: 80px; background: #10b981; }
+        .input-area button:hover { background: #059669; }
+    </style>
 </head>
-
 <body>
 
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
-
-<div class="heart" style="left:10%; animation-delay:0s;">♥</div>
-<div class="heart" style="left:25%; animation-delay:2s;">♥</div>
-<div class="heart" style="left:40%; animation-delay:4s;">♥</div>
-<div class="heart" style="left:70%; animation-delay:1s;">♥</div>
-<div class="heart" style="left:85%; animation-delay:3s;">♥</div>
-
-<div class="card">
-
-    <div class="small-text">
-        A little message for you
-    </div>
-
-    <h1>
-        Hey Future <br>
-        <span class="highlight">Medical Tech Star</span>
-    </h1>
-
-    <p>
-        I know studying feels exhausting sometimes.
-        Some days you want to rest, scroll on your phone,
-        and forget all the notes, lab work, and textbooks.
-    </p>
-
-    <p>
-        But honestly, I really believe in you.
-        You are smart, hardworking, and capable of doing amazing things.
-        Even when you doubt yourself, I hope you remember
-        that someone out there truly admires your effort.
-    </p>
-
-    <p>
-        One day, all these late-night study sessions
-        will become part of your success story.
-        So don't give up yet.
-    </p>
-
-    <div class="quote-box" id="quoteBox"></div>
-
-    <div class="buttons">
-
-        <button class="btn-motivate" onclick="motivateMe()">
-            I Need Motivation
-        </button>
-
-        <button class="btn-focus" onclick="focusMode()">
-            Enter Study Mode
-        </button>
-
-    </div>
-
-    <div class="footer">
-        YOU ARE DOING BETTER THAN YOU THINK
-    </div>
-
-</div>
-
-<script>
-
-const quotes = [
-
-    "The future hospital lab is waiting for someone exactly like you.",
-
-    "Every chapter you finish is one step closer to your dream.",
-
-    "You do not need perfect motivation. Just one more small step.",
-
-    "A tired student today can become an incredible professional tomorrow.",
-
-    "Someone believes in you more than you realize.",
-
-    "Study now so future-you can smile proudly later."
-
-];
-
-function motivateMe(){
-
-    const quoteBox = document.getElementById("quoteBox");
-
-    const randomQuote =
-    quotes[Math.floor(Math.random() * quotes.length)];
-
-    quoteBox.innerHTML = randomQuote;
-
-    quoteBox.style.display = "block";
-}
-
-function focusMode(){
-
-    document.querySelector(".card").innerHTML = `
-
-        <div class="small-text">
-            Focus Mode Activated
+    <div class="chat-container">
+        <div id="setup-screen">
+            <h1>Private P2P Chat</h1>
+            <p style="color: #64748b; margin-bottom: 10px; font-size: 14px;">Your Secret Code (Send this to her):</p>
+            <div class="code-box" id="my-code">Generating...</div>
+            
+            <p style="color: #64748b; margin-bottom: 10px; font-size: 14px;">Or enter her code here:</p>
+            <input type="text" id="room-input" placeholder="Paste code here...">
+            <button onclick="joinRoom()">Connect</button>
         </div>
 
-        <h1>
-            You Can Do This
-        </h1>
-
-        <p>
-            Put your phone away for 25 minutes.
-            Open your notes.
-            Start with just one page.
-        </p>
-
-        <p class="highlight">
-            Small progress is still progress.
-        </p>
-
-        <div class="buttons">
-
-            <button class="btn-focus" onclick="location.reload()">
-                Take a Short Break
-            </button>
-
+        <div id="chat-screen">
+            <div class="header">Secure Connection Active 🔒</div>
+            <div class="messages" id="chat-box">
+                <div class="msg system">Connected! Messages are not saved anywhere.</div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="msg-input" placeholder="Type a message..." onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()">Send</button>
+            </div>
         </div>
+    </div>
 
-        <div class="footer">
-            KEEP GOING
-        </div>
+    <script>
+        // Generate a random 5-letter code for easy sharing
+        const mySecretId = Math.random().toString(36).substring(2, 7).toUpperCase();
+        const peer = new Peer(mySecretId); 
+        let conn;
 
-    `;
-}
+        // When PeerJS is ready, show my code
+        peer.on('open', function(id) {
+            document.getElementById('my-code').textContent = id;
+        });
 
-</script>
+        // If SHE connects to ME
+        peer.on('connection', function(connection) {
+            conn = connection;
+            setupChat();
+        });
+
+        // If I connect to HER
+        function joinRoom() {
+            const partnerId = document.getElementById('room-input').value.trim().toUpperCase();
+            if(!partnerId) return;
+            conn = peer.connect(partnerId);
+            conn.on('open', setupChat);
+        }
+
+        // Switch UI and listen for messages
+        function setupChat() {
+            document.getElementById('setup-screen').style.display = 'none';
+            document.getElementById('chat-screen').style.display = 'flex';
+            
+            conn.on('data', function(data) {
+                addMessage(data, 'her');
+            });
+
+            conn.on('close', function() {
+                addMessage("Your partner disconnected.", 'system');
+            });
+        }
+
+        // Send a message
+        function sendMessage() {
+            const input = document.getElementById('msg-input');
+            const text = input.value.trim();
+            if (text === '') return;
+            
+            conn.send(text);
+            addMessage(text, 'me');
+            input.value = '';
+        }
+
+        // Press Enter to send
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        // Add message bubble to the screen
+        function addMessage(text, senderType) {
+            const chatBox = document.getElementById('chat-box');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'msg ' + senderType;
+            msgDiv.textContent = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+        }
+
+        peer.on('error', function(err) {
+            alert('Connection Error: Make sure the code is correct!');
+        });
+    </script>
 
 </body>
 </html>
