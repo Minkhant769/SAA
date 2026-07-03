@@ -16,7 +16,7 @@ aws s3api put-public-access-block \
 aws s3api get-public-access-block --bucket acl-example-mk-123
 '''
 
-## Change Bucket Wonership
+## Change Bucket Ownership
 
 '''sh
 aws s3api put-bucket-ownership-controls \
