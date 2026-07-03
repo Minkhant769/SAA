@@ -1,5 +1,5 @@
 import json
-from faker import Faker
+from faker import aker
 
 def handler(event, context):
     fake = Faker()
